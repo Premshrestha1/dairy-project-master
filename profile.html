@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="styles.css">
+    <title>User Profile</title>
+</head>
+<body>
+    <?php
+    // PHP code to handle form submission and user data
+    if ($_SERVER["REQUEST_METHOD"] == "POST") {
+        $name = $_POST["name"];
+        $email = $_POST["email"];
+
+        // Update user information in a database (not shown in this example)
+
+        // Display a success message
+        echo "<div class='success-message'>Profile updated successfully</div>
+    
+    
+
+    <div class="profile-container">
+        <div class="profile-picture">
+           <br> <img id="profile-image" src="default-avatar.png" alt="User Profile Picture">
+           <br><br> <input type="file" id="image-upload" accept="image/*">
+        </div>
+        <div class="user-details">
+            <form method="POST" action="<?php echo htmlspecialchars($_SERVER["PHP_SELF"]); ?>
+              <br>  <label for="name">Name:</label>
+                <input type="text" id="name" name="name" value="diksha">
+                <br>
+               <br> <label for="email">Email:</label>
+                <input type="email" id="email" name="email" value="dikshyasa06@gmail.com">
+                <br>
+                <br> <label for="address">Address:</label>
+                <input type="name" id="name" name="Address" value="Banepa ">
+               <br> <br> <input type="submit" value="Update Profile">
+            </form>
+        </div>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="styles.css">
+    <title>Logout Confirmation</title>
+    <style>
+    body {
+    font-family: Arial, sans-serif;
+    background-color: #f2f2f2;
+    margin: 0;
+    padding: 0;
+}
+
+.logout-container {
+    width: 300px;
+    margin: 100px auto;
+    padding: 20px;
+    background-color: white;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    text-align: center;
+}
+
+h2 {
+    margin-bottom: 20px;
+}
+
+button {
+    background-color: #007bff;
+    color: white;
+    border: none;
+    padding: 10px 20px;
+    cursor: pointer;
+    margin: 10px;
+}
+
+button:hover {
+    background-color: #0056b3;
+}
+</style>
+</head>
+<body>
+    <div class="logout-container">
+        <h2>Do you want to logout?</h2>
+        <button id="yes-button">Yes</button>
+        <button id="no-button">No</button>
+    </div>
+
+    <script src="script.js"></script>
+    <script>
+    const yesButton = document.getElementById("yes-button");
+const noButton = document.getElementById("no-button");
+
+yesButton.addEventListener("click", function () {
+    // Perform the logout action or redirect to a logout page
+    alert("Logged out successfully!"); // Replace with your actual logout logic
+});
+
+noButton.addEventListener("click", function () {
+    // Do nothing or close the confirmation dialog
+    alert("Logout canceled.");
+});
+</script>
+</body>
+</html>
+

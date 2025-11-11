@@ -1,0 +1,499 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <title>shop page</title>
+  <style>
+    @import url('https://fonts.googleapis.com/css2?family=League+Spartan:wght@100&display=swap');
+
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+      font-family: 'League Spartan', sans-serif;
+    }
+
+    h1 {
+      font-size: 50px;
+      line-height: 64px;
+      color: #222;
+    }
+
+    h2 {
+      font-size: 40px;
+      color: #222;
+    }
+
+    h4 {
+      font-size: 20px;
+      color: #222;
+
+    }
+
+    h6 {
+      font-weight: 700;
+      font-size: 12px;
+
+    }
+
+    p {
+      font-size: 16px;
+      color: #456b42;
+      margin: 15px 0 20px 0;
+      font-size: 20px;
+      font-family: 'Courier New', Courier, monospace;
+      font-weight: 400;
+    }
+
+    .section-p1 {
+      padding: 40px 80px;
+
+    }
+
+    .section.m1 {
+      margin: 40px 0px;
+    }
+
+    body {
+      width: 100%;
+
+    }
+
+    /*header start*/
+    #header {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 10px 80px;
+      position: sticky;
+      top: 0;
+      left: 0;
+      z-index: 999;
+      background-color: #E3E6F3;
+      box-shadow: 1px 4px rgb(0, 0, 0, 0.06);
+      color: white;
+    }
+    .logo{
+   max-width:15rem;
+   background: transparent;
+ }
+
+    #navbar {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+
+    }
+
+    #navbar li {
+      list-style: none;
+      padding: 0px 20px;
+      position: relative;
+
+    }
+
+    #navbar li a {
+      text-decoration: none;
+      font-size: 16px;
+      font-weight: 300;
+      color: #1a1a1a;
+      transition: 0.3s ease;
+      font-size: 20px;
+    }
+
+    #navbar li a:hover,
+    #navbar li a.active {
+      color: #088178;
+    }
+
+    #navbar li img {
+      font-size: 40px;
+      cursor: pointer;
+
+    }
+
+    #navbar li a.active::after,
+    #navbar li a:hover::after {
+      content: " ";
+      width: 30px;
+      height: 2px;
+      position: absolute;
+      background: #088178;
+      bottom: -4px;
+      left: 20px;
+    }
+
+
+    .dropdown-content {
+      display: none;
+      position: absolute;
+      top: 100%;
+      left: 0;
+      z-index: 1;
+    }
+
+    .dropdown-content li {
+      display: block;
+      padding: 8px 12px;
+      /* Add some padding to the dropdown items */
+    }
+
+    li.dropdown:hover .dropdown-content {
+      display: block;
+    }
+
+    .dropdown-content a {
+      text-decoration: none;
+    }
+
+    .login {
+      border: 1px solid black;
+      width: 100%;
+      background-color: #E3E6F3;
+      padding: 4px;
+      border-radius: 8px;
+    }
+
+    .signup {
+      border: 1px solid black;
+      width: 100%;
+      padding: 4px;
+      margin-top: 4px;
+      background-color: #E3E6F3;
+      border-radius: 8px;
+    }
+
+    .login:hover {
+      background-color: #fff;
+    }
+
+    .signup:hover {
+      background-color: #fff;
+    }
+
+    .dropdown-content a {
+      text-decoration: none;
+    }
+
+    /* Cart*/
+    .cart {
+      position: fixed;
+      top: 0;
+      right: -100%;
+      width: 360px;
+      min-height: 100vh;
+      padding: 20px;
+      background: white;
+      box-shadow: -2px 0 4px black;
+      transition: o.3s;
+    }
+
+    .cart-active {
+      right:0;
+    }
+
+    .cart-title {
+      text-align: center;
+      font-size: 30px;
+      font-weight: 600;
+      margin-top: 2rem;
+    }
+
+    .cart-box {
+      display: grid;
+      grid-template-columns: 32% 50% 18%;
+      align-items: center;
+      gap: 4rem;
+      margin-top: 1rem;
+      color: black;
+      font-weight: 600;
+    }
+
+    .cart-img {
+      width: 100px;
+      height: 100px;
+      object-fit: contain;
+      padding: 1rem;
+    }
+
+    .details-box {
+      display: grid;
+      row-gap: 0.5rem;
+    }
+
+    .cart-product-title {
+      font-size: 1rem;
+      text-transform: uppercase;
+
+    }
+
+    .cart-price {
+      font-weight: 600;
+    }
+
+    .cart-quantity {
+      border: 1px solid black;
+      width: 2.4rem;
+      height: 1.5rem;
+      text-align: center;
+      font-size: 1rem;
+      font-weight: 700;
+    }
+
+    .cart-remove {
+      position: relative;
+      top: 10%;
+      left: 80%;
+      color: red;
+      cursor: pointer;
+    }
+
+    .cart-remove:hover {
+      background-color: red;
+    }
+
+    .total {
+      display: flex;
+      justify-content: flex-end;
+      margin-top: 1.5rem;
+      border-top: 1px solid black;
+    }
+
+    .total-title {
+      font-size: 1rem;
+      font-weight: 800;
+      margin-top: 5px;
+      color: black;
+    }
+
+    .total-price {
+      font-size: 1rem;
+      font-weight: 800;
+      margin-top: 5px;
+      color: black;
+      margin-left: 0.5rem;
+    }
+
+    .Btn-buy {
+      display: flex;
+      margin: 1.5rem auto 0 auto;
+      padding: 12px 20px;
+      border: none;
+      background-color: #E3E6F3;
+      font-size: 1rem;
+      font-weight: 800;
+    }
+
+    .Btn-buy:hover {
+      background-color: red;
+      cursor: pointer;
+    }
+
+    #close-cart {
+      position: absolute;
+      top: 1rem;
+      right: 1.8rem;
+      font-size: 2rem;
+      color: black;
+      cursor: pointer;
+    }
+
+    .cart-remove {
+      margin: 0;
+      padding: 0;
+
+    }
+
+    .shop-container {
+      margin-top: 10px;
+      margin-bottom: 5px;
+      justify-content: center;
+
+    }
+
+    .shop-content img {
+      height: 50%;
+      max-width: 200px;
+      justify-content: center;
+      background-color: #E3E6F3;
+      object-fit: cover;
+
+    }
+
+    .section-title {
+      font-size: 1.5rem;
+      text-transform: uppercase;
+      font-weight: 700;
+      margin: 3px;
+      text-align: center;
+    }
+
+    .btn img {
+      background: transparent;
+      size: 20px;
+      height: auto;
+      max-width: 30px;
+      line-height: 40px;
+      position: absolute;
+      bottom: 10px;
+      left: 85%;
+      color: #e8f6ea;
+      font-weight: 500;
+      background-color: #fff;
+      border: 1px solid;
+    }
+
+
+    .btn img:hover {
+      background-color: #E3E6F3;
+      cursor: pointer;
+      border: 1px solid black;
+    }
+
+    /*shop part*/
+    .shop-content {
+      margin: 20px;
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(220px, auto));
+      gap: 1.3rem;
+      justify-content: center;
+    }
+
+    .product-box {
+      position: relative;
+
+    }
+
+    .product-box:hover {
+      padding: 10px;
+      border: 1px solid black;
+      transition: 0.4s;
+
+    }
+
+    .product-title {
+      font-size: 1.1rem;
+      font-weight: 600;
+      text-transform: uppercase;
+      margin-top: 0.5rem;
+    }
+
+    .price {
+      font-weight: 700;
+      font-size: 15px;
+    }
+  </style>
+  <link href='https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css' rel='stylesheet'>
+</head>
+
+<body>
+  <section id="header" class="header">
+
+    <a href="#"><img src="image/logo/logo.png" class="logo"></a>
+    <div>
+      <ul id="navbar">
+        <li><a href="afterlogin.php">Home</a></li>
+        <li><a class="active" href="aftershop.php">Shop</a></li>
+        <li><a href="afterabout.html">About</a></li>
+        <li><a href="aftercontact.html">Contact</a></li>
+        <li class="dropdown">
+          <a href="profile.php"> Your Profile</a>
+        </li>
+
+        <li> <img src="image/logo/cart.png" height="30px" id="cart-icon" class="carticon"></li>
+      </ul>
+      <!--cart-->
+      <div class="cart">
+        <h2 class="cart-title"> Your Cart</h2>
+        <!--Cart content-->
+        <div class="cart-content">
+          <div class="cart-box">
+            <img src="image/features product/milk.png" height="200px" alt="" class="cart-img">
+            <div class="details-box">
+              <div class="cart-product-title">Milk</div>
+              <div class="cart-price">NRP 150 Per liter</div>
+
+              <input type="number" value="1" class="cart-quantity">
+
+              <!--Remove cart-->
+              <img src="image/features product/trash-can.png" alt="" height="20px" class="cart-remove">
+            </div>
+          </div>
+        </div>
+        <!--Total-->
+        <div class="total">
+          <div class="total-title">Total</div>
+          <div class="total-price">NRP 0/-</div>
+        </div>
+        <!--Buy bottion-->
+        <button type="button" class="Btn-buy">Buy Now</button>
+        <!--Cart Close-->
+        <img src="image/features product/close.png" height="10px" alt="" id="close-cart">
+      </div>
+    </div>
+  </section>
+  <section class="shop-container">
+    <div class="section-title">our products.</div>
+    <div class="shop-content">
+
+      <div class="product-box">
+        <img src="image/features product/milk.png" class="product-img">
+        <h2 class="product-title">Milk</h2>
+        <span class="price">NRP 150 per liter</span>
+        <p>Fresh milk </p>
+        <div class="btn"> <img src="image/logo/shopping-cart.png" alt=""></div>
+
+      </div>
+
+      <div class="product-box">
+        <img src="image/features product/cheese.png" class="product-img">
+        <h2 class="product-title">Cheese</h2>
+        <span class="price">NRP 1500 per kg</span>
+        <p>Made with Pure and Organic milk.</p>
+        <div class="btn"> <img src="image/logo/shopping-cart.png" alt=""></div>
+      </div>
+
+      <div class="product-box">
+        <img src="image/features product/ghee.png" class="product-img">
+        <h2 class="product-title">ghee</h2>
+        <span class="price">NRP 1000 per kg</span>
+        <p>Made with Pure and Organic milk.</p>
+        <div class="btn"> <img src="image/logo/shopping-cart.png" alt=""></div>
+
+      </div>
+
+      <div class="product-box">
+        <img src="image/features product/puneer.png" class="product-img">
+        <h2 class="product-title">Punner</h2>
+        <span class="price">NRP 400 per kg</span>
+        <p>Made with Pure and Organic milk.</p>
+        <div class="btn"> <img src="image/logo/shopping-cart.png" alt=""></div>
+
+      </div>
+
+      <div class="product-box">
+        <img src="image/features product/yogurt.png" class="product-img">
+        <h2 class="product-title">Yogurt</h2>
+        <span class="price">NRP 180per liter</span>
+        <p>Made with Pure and Organic milk.</p>
+        <div class="btn"> <img src="image/logo/shopping-cart.png" alt=""></div>
+
+      </div>
+
+      <div class="product-box">
+        <img src="image/features product/powder.png" class="product-img">
+        <h2 class="product-title">Milk-Powder</h2>
+        <span class="price">NRP 500 per packet</span>
+        <p>Made with Pure and Organic milk.</p>
+        <div class="btn"> <img src="image/logo/shopping-cart.png" alt=""></div>
+
+      </div>
+    </div>
+
+  </section>
+
+  <script src="js/main.js">
+  </script>
+</body>
+
+</html>
